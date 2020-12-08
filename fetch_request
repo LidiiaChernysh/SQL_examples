@@ -44,7 +44,7 @@ select name_student, name_subject, date_attempt, round(sum(is_correct)/3*100, 2)
 from subject
     inner join attempt 
     using (subject_id)
-       inner JOIN student
+       inner join student
         on student.student_id = attempt.student_id
            inner join testing 
             on testing.attempt_id = attempt.attempt_id
@@ -53,9 +53,9 @@ from subject
             
                   
 group by attempt.attempt_id
-ORDER BY name_student, date_attempt DESC
+order by name_student, date_attempt desc
 
-Результат:
+#Результат:
 
 +-----------------+-------------------+--------------+-----------+
 | name_student    | name_subject      | date_attempt | Результат |
