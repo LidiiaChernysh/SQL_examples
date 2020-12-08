@@ -1,0 +1,16 @@
+# Задание
+Если студент совершал несколько попыток по одной и той же дисциплине, то вывести разницу в днях между первой и последней попыткой. 
+Информацию вывести по возрастанию разницы. Студентов, сделавших одну попытку по дисциплине, не учитывать. 
+
+Фрагмент логической схемы базы данных ...
+#####################################
+
+SELECT name_student, name_subject, DATEDIFF(MAX(date_attempt), MIN(date_attempt)) AS Интервал
+FROM student
+    LEFT JOIN attempt
+    USING (student_id)
+        LEFT JOIN subject
+        USING (subject_id)
+GROUP BY student_id, subject_id
+HAVING Интервал > 0
+ORDER BY Интервал
